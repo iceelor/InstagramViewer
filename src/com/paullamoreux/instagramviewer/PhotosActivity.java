@@ -54,21 +54,22 @@ public class PhotosActivity extends Activity {
 						
 						JSONObject photoJSON = photosJSON.getJSONObject(i);
 						InstagramPhoto photo = new InstagramPhoto();
-						photo.username = photoJSON.getJSONObject("user")
-								.getString("username");
+						photo.username = photoJSON.getJSONObject("user").getString("username");
+						photo.profilePictureUrl = photoJSON.getJSONObject("user").getString("profile_picture");
 						
-						if (photoJSON.getJSONObject("caption") != null) {
-							photo.caption = photoJSON.getJSONObject("caption").getString("text");
+						try {
+							if (photoJSON.getJSONObject("caption") != null) {
+								photo.caption = photoJSON.getJSONObject("caption").getString("text");
+							}
+						} catch (JSONException e2) {
+							Log.i("DEBUG", "caption error");
+							e2.printStackTrace();
 						}
 						
-						photo.imageUrl = photoJSON.getJSONObject("images")
-								.getJSONObject("standard_resolution")
-								.getString("url");
-						photo.imageHeight = photoJSON.getJSONObject("images")
-								.getJSONObject("standard_resolution")
-								.getInt("height");
-						photo.likesCount = photoJSON.getJSONObject("likes")
-								.getInt("count");
+						photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
+						photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
+						photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
+						photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
 						
 						photos.add(photo);
 					}
