@@ -8,8 +8,8 @@ Android Instagram Client
 Completed user stories: 
 
 - [x] Required: User can scroll through current popular photos from Instagram
-- [x] Required: For each photo displayed, user can see the following details: Graphic, Caption, Username
-- [x] Optional: For each photo displayed, display like count, user profile image
+- [] Required: For each photo displayed, user can see the following details: Graphic, Caption, Username
+- [] Optional: For each photo displayed, display like count, user profile image
 
 
 Walkthroughs with optional user stories:
