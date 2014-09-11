@@ -19,14 +19,19 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
 		InstagramPhoto photo = getItem(position);
+		
 		if (convertView == null) {
-			// create a new view from scratch
+			// create a new view from scratch, otherwise use the view passed in
 			convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false);
 		}
+		
+		TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
 		TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
 		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
 		
+		tvUsername.setText(photo.username);
 		tvCaption.setText(photo.caption);
 		imgPhoto.getLayoutParams().height = photo.imageHeight;
 		imgPhoto.setImageResource(0);

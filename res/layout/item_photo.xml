@@ -3,24 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imgPhoto"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
+    <TextView
+        android:id="@+id/tvUsername"
+        android:textColor="#3333FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:text="Username text view" />
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvUsername"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/tvCaption"
-        android:maxLines="3"
-        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imgPhoto"
+        android:ellipsize="end"
+        android:maxLines="3"
         android:text="@string/caption_default_text" />
 
 </RelativeLayout>
