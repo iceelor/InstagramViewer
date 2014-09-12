@@ -6,30 +6,11 @@
     <ImageView
         android:id="@+id/imgProfilePic"
         android:layout_width="40dp"
-        android:padding="5dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:padding="5dp"
         android:src="@drawable/ic_launcher" />
-
-    <ImageView
-        android:id="@+id/imgPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvUsername"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/tvCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imgPhoto"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="@string/caption_default_text" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -39,6 +20,63 @@
         android:layout_marginBottom="14dp"
         android:layout_toRightOf="@+id/imgProfilePic"
         android:text="Username text view"
-        android:textColor="#3333FF" />
+        android:textColor="#1C22D4" />
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvUsername"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imgPhoto"
+        android:padding="5dp" >
+
+        <TextView
+            android:id="@+id/tvCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/caption_default_text" />
+
+        <LinearLayout
+            android:layout_below="@+id/tvCaption"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imgFavorite"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/favorite" />
+
+            <TextView
+                android:id="@+id/tvLikesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Like Count"
+                android:textColor="#1C22D4" />
+
+            <TextView
+                android:id="@+id/tvLikesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/likes_label" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

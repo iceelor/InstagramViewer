@@ -29,12 +29,13 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		
 		TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
 		TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+		TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
 		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
 		ImageView imgProfilePic = (ImageView) convertView.findViewById(R.id.imgProfilePic);
 		
 		tvUsername.setText(photo.username);
 		tvCaption.setText(photo.caption);
-		
+		tvLikesCount.setText(Integer.toString(photo.likesCount));		
 //		imgPhoto.getLayoutParams().height = photo.imageHeight;
 //		imgPhoto.getLayoutParams().width = photo.imageWidth;
 		imgPhoto.setImageResource(0);
