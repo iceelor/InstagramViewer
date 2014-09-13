@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,31 +24,44 @@ public class PhotosActivity extends Activity {
 	private ArrayList<InstagramPhoto> photos;
 	private InstagramPhotosAdapter aPhotos;
 	private ListView lvPhotos;
+	
+	private SwipeRefreshLayout swipeContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_photos);
-		fetchPopularPhotos();
 
+		fetchPopularPhotos();
+		
+		swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+            	fetchPopularPhotos();
+            } 
+        });
 	}
+
 
 	private void fetchPopularPhotos() {
 		photos = new ArrayList<InstagramPhoto>();
-		
+
 		aPhotos = new InstagramPhotosAdapter(this, photos);
 		lvPhotos = (ListView) findViewById(R.id.lvPhotos);
 		lvPhotos.setAdapter(aPhotos);
 		
 		// https://api.instagram.com/v1/media/popular?client_id=8e50b9f199d84972a23c9740f24c10d1
-		String popularUrl = "https://api.instagram.com/v1/media/popular?client_id="
-				+ CLIENT_ID;
+		String popularUrl = "https://api.instagram.com/v1/media/popular?client_id=" + CLIENT_ID;
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(popularUrl, new JsonHttpResponseHandler() {
 			@Override
-			public void onSuccess(int statusCode, Header[] headers,
-					JSONObject response) {
-
+			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+				
 				JSONArray photosJSON = null;
 				try {
 					photosJSON = response.getJSONArray("data");
@@ -74,14 +89,20 @@ public class PhotosActivity extends Activity {
 						photos.add(photo);
 					}
 					aPhotos.notifyDataSetChanged();
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+				
+				swipeContainer.setRefreshing(false);
+
+				
 			}
 
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					String responseString, Throwable throwable) {
+				swipeContainer.setRefreshing(false);
 				Log.i("INFO", responseString);
 			}
 		});
@@ -105,4 +126,7 @@ public class PhotosActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	
 }
