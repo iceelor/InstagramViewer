@@ -112,8 +112,19 @@
             android:maxLines="3"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingBottom="20dp"
             android:text="@string/caption_default_text" />
+
+        <LinearLayout
+            android:id="@+id/llComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCaption"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical" >
+
+        </LinearLayout>
         
     </RelativeLayout>
 

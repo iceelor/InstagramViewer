@@ -1,5 +1,7 @@
 package com.paullamoreux.instagramviewer;
 
+import java.util.ArrayList;
+
 public class InstagramPhoto {
 	public String username;
 	public String caption;
@@ -9,4 +11,5 @@ public class InstagramPhoto {
 	public int likesCount;
 	public long createdTime;
 	public String profilePictureUrl;
+	public ArrayList<InstagramComment> comments;
 }

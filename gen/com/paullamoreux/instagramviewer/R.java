@@ -65,10 +65,11 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
+        public static final int action_settings=0x7f08000e;
         public static final int imgFavorite=0x7f080009;
         public static final int imgPhoto=0x7f080002;
         public static final int imgProfilePic=0x7f080004;
+        public static final int llComments=0x7f08000d;
         public static final int llFooter=0x7f080008;
         public static final int lvPhotos=0x7f080001;
         public static final int rlFooter=0x7f080007;
