@@ -74,6 +74,8 @@ public class PhotosActivity extends Activity {
 						
 						if (photoJSON.optJSONObject("caption") != null) {
 							photo.caption = photoJSON.getJSONObject("caption").getString("text");
+						} else {
+							photo.caption = null;
 						}
 						
 						photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");

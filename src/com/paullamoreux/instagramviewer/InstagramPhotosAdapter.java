@@ -3,6 +3,7 @@ package com.paullamoreux.instagramviewer;
 import java.util.List;
 
 import android.content.Context;
+import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,12 +36,17 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
 		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
 		CircularImageView imgProfilePic = (CircularImageView) convertView.findViewById(R.id.imgProfilePic);
-		
+
+		if (photo.caption != null) {
+			tvCaption.setVisibility(View.VISIBLE);
+			String usernameAndCaption = "<font color='#0000ff'>" + photo.username + "</font> " + photo.caption; //"This <i>is</i> a <b>test</b>";
+			tvCaption.setText(Html.fromHtml(usernameAndCaption));
+		} else {
+			tvCaption.setVisibility(View.GONE);
+		}
+
 		tvUsername.setText(photo.username);
-		tvCaption.setText(photo.caption);
 		tvLikesCount.setText(Integer.toString(photo.likesCount));		
-//		imgPhoto.getLayoutParams().height = photo.imageHeight;
-//		imgPhoto.getLayoutParams().width = photo.imageWidth;
 		imgPhoto.setImageResource(0);
 		Picasso.with(getContext()).load(photo.imageUrl).into(imgPhoto);
 		

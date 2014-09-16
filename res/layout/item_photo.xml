@@ -40,20 +40,12 @@
         android:layout_below="@+id/imgPhoto"
         android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/tvCaption"
+        <LinearLayout
+            android:id="@+id/llFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:text="@string/caption_default_text" />
-
-        <LinearLayout
-            android:layout_below="@+id/tvCaption"
             android:gravity="center_vertical"
-            android:padding="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:padding="5dp" >
 
             <ImageView
                 android:id="@+id/imgFavorite"
@@ -76,6 +68,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/likes_label" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:layout_below="@+id/llFooter"
+            android:text="@string/caption_default_text" />
 
     </RelativeLayout>
 
