@@ -5,8 +5,8 @@
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imgProfilePic"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:padding="5dp"
@@ -31,6 +31,17 @@
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvRelativeTime"
+        android:paddingRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvUsername"
+        android:layout_alignBottom="@+id/tvUsername"
+        android:layout_alignParentRight="true"
+        android:textColor="#aaaaaa"
+        android:text="date" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
@@ -79,15 +90,5 @@
             android:text="@string/caption_default_text" />
 
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tvRelativeTime"
-        android:paddingRight="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvUsername"
-        android:layout_alignBottom="@+id/tvUsername"
-        android:layout_alignParentRight="true"
-        android:text="date" />
 
 </RelativeLayout>
