@@ -3,6 +3,7 @@ package com.paullamoreux.instagramviewer;
 import java.util.List;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		}
 		
 		TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+		TextView tvRelativeTime = (TextView) convertView.findViewById(R.id.tvRelativeTime);
 		TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
 		TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
 		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
@@ -44,6 +46,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		//imgProfilePic.getLayoutParams().height = 150;
 		imgProfilePic.setImageResource(0);
 		Picasso.with(getContext()).load(photo.profilePictureUrl).into(imgProfilePic);
+		
+		CharSequence relativeDateString = DateUtils.getRelativeTimeSpanString(photo.createdTime * 1000);
+		tvRelativeTime.setText(relativeDateString);
 		
 		return convertView;
 	}

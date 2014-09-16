@@ -79,4 +79,14 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tvRelativeTime"
+        android:paddingRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvUsername"
+        android:layout_alignBottom="@+id/tvUsername"
+        android:layout_alignParentRight="true"
+        android:text="date" />
+
 </RelativeLayout>
