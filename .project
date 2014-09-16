@@ -3,6 +3,7 @@
 	<name>InstagramViewer</name>
 	<comment></comment>
 	<projects>
+		<project>CircularImageView</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
