@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
@@ -33,7 +34,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
 		TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
 		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
-		ImageView imgProfilePic = (ImageView) convertView.findViewById(R.id.imgProfilePic);
+		CircularImageView imgProfilePic = (CircularImageView) convertView.findViewById(R.id.imgProfilePic);
 		
 		tvUsername.setText(photo.username);
 		tvCaption.setText(photo.caption);
