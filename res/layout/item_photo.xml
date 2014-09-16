@@ -3,52 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/imgProfilePic"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:padding="5dp"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgProfilePic"
-        android:layout_marginBottom="14dp"
-        android:layout_toRightOf="@+id/imgProfilePic"
-        android:text="Username text view"
-        android:textColor="#1C22D4" />
-
     <ImageView
         android:id="@+id/imgPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvUsername"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
         android:src="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tvRelativeTime"
-        android:paddingRight="5dp"
+    <RelativeLayout
+        android:id="@+id/rlHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvUsername"
-        android:layout_alignBottom="@+id/tvUsername"
-        android:layout_alignParentRight="true"
-        android:textColor="#aaaaaa"
-        android:text="date" />
+        android:background="#ffffff"
+        android:alpha="0.8"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgProfilePic"
+            android:layout_centerVertical="true"
+            android:text="Username text view"
+            android:textColor="#1C22D4" />
+
+        <!--  TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tvUsername"
+            android:layout_below="@id/tvUsername"
+            android:text="Location" / -->
+
+        <TextView
+            android:id="@+id/tvRelativeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:text="date"
+            android:textColor="#999999" />
+
+    </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
+        android:id="@+id/rlFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imgPhoto"
+        android:layout_below="@id/imgPhoto"
         android:padding="5dp" >
 
         <LinearLayout
@@ -56,7 +74,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="5dp" >
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp" 
+            
+            >
 
             <ImageView
                 android:id="@+id/imgFavorite"
@@ -77,18 +98,23 @@
                 android:id="@+id/tvLikesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/likes_label" />
+                android:text="@string/likes_label"
+                android:textColor="#1C22D4" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/llFooter"
             android:ellipsize="end"
             android:maxLines="3"
-            android:layout_below="@+id/llFooter"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="20dp"
             android:text="@string/caption_default_text" />
-
+        
     </RelativeLayout>
 
 </RelativeLayout>
