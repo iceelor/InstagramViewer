@@ -14,7 +14,7 @@ Completed user stories:
 - [x] Required: For each photo displayed, user can see the following details: Graphic, Caption, Username
 - [x] Optional: For each photo displayed, display like count, user profile image
 - [x] Optional: Add pull-to-refresh for popular stream with SwipeRefreshLayout
-- [x] Optional: Show latest comment for each photo (bonus: show last 2 comments)
+- [x] Optional: Show latest comment for each photo
 - [x] Optional: Display each photo with the same style and proportions as the real Instagram
 - [x] Optional: Show profile picture in a circular frame
 - [x] Optional: Show relative time of creation date of photo
