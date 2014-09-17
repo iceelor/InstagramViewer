@@ -18,7 +18,7 @@ Completed user stories:
 
 Walkthroughs with optional user stories:
 
-[Features Video Walkthrough](demo.gif)
+![Features Video Walkthrough](demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
