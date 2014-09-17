@@ -62,14 +62,25 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		CharSequence relativeDateString = DateUtils.getRelativeTimeSpanString(photo.createdTime * 1000);
 		tvRelativeTime.setText(relativeDateString);
 		
+		TextView comment;
+		
 		if (photo.comments.size() > 0) {
 			LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.llComments);
 			linearLayout.removeAllViews();  // clear past comments since recycling layout
-			TextView comment1 = new TextView(getContext());
-			comment1.setText(getFormattedComment(photo.comments.get(0).username, photo.comments.get(0).text));
-			comment1.setMaxLines(3);
-			comment1.setEllipsize(TextUtils.TruncateAt.END);
-			linearLayout.addView(comment1);
+			
+			comment = new TextView(getContext());
+			comment.setText(getFormattedComment(photo.comments.get(0).username, photo.comments.get(0).text));
+			comment.setMaxLines(3);
+			comment.setEllipsize(TextUtils.TruncateAt.END);
+			linearLayout.addView(comment);
+
+			if (photo.comments.size() > 1) {
+				comment = new TextView(getContext());
+				comment.setText(getFormattedComment(photo.comments.get(1).username, photo.comments.get(1).text));
+				comment.setMaxLines(3);
+				comment.setEllipsize(TextUtils.TruncateAt.END);
+				linearLayout.addView(comment);
+			}
 		}
 		
 		return convertView;

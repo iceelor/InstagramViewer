@@ -87,13 +87,24 @@ public class PhotosActivity extends Activity {
 						JSONArray commentsJSON = photoJSON.getJSONObject("comments").getJSONArray("data");
 						int numComments = commentsJSON.length();
 						
+						InstagramComment comment;
+						JSONObject commentJSON;
+						
 						if (numComments > 0) {
-							InstagramComment comment = new InstagramComment();
-							JSONObject commentJSON = commentsJSON.getJSONObject(numComments - 1);
+							comment = new InstagramComment();
+							commentJSON = commentsJSON.getJSONObject(numComments - 1);
 							comment.username = commentJSON.getJSONObject("from").getString("username");
 							comment.text = commentJSON.getString("text");
 							photo.comments = new ArrayList<InstagramComment>();
 							photo.comments.add(comment);
+							
+							if (numComments > 1) {
+								comment = new InstagramComment();
+								commentJSON = commentsJSON.getJSONObject(numComments - 2);
+								comment.username = commentJSON.getJSONObject("from").getString("username");
+								comment.text = commentJSON.getString("text");
+								photo.comments.add(comment);
+							}
 						}
 						
 						photos.add(photo);
