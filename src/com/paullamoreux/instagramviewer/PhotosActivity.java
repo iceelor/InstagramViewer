@@ -90,7 +90,6 @@ public class PhotosActivity extends Activity {
 						if (numComments > 0) {
 							InstagramComment comment = new InstagramComment();
 							JSONObject commentJSON = commentsJSON.getJSONObject(numComments - 1);
-							Log.i("INFO", commentJSON.toString());
 							comment.username = commentJSON.getJSONObject("from").getString("username");
 							comment.text = commentJSON.getString("text");
 							photo.comments = new ArrayList<InstagramComment>();

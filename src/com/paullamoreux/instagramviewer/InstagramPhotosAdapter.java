@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		}
 
 		tvUsername.setText(photo.username);
-		tvLikesCount.setText(Integer.toString(photo.likesCount));		
+		tvLikesCount.setText(Integer.toString(photo.likesCount) + " Likes");		
 		imgPhoto.setImageResource(0);
 		Picasso.with(getContext()).load(photo.imageUrl).into(imgPhoto);
 		
@@ -65,9 +66,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 			LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.llComments);
 			linearLayout.removeAllViews();  // clear past comments since recycling layout
 			TextView comment1 = new TextView(getContext());
-	//		comment1.setText(photo.username + " " + photo.comments.get(0).text);
 			comment1.setText(getFormattedComment(photo.comments.get(0).username, photo.comments.get(0).text));
-			//linearLayout.setBackgroundColor(Color.TRANSPARENT);
+			comment1.setMaxLines(3);
+			comment1.setEllipsize(TextUtils.TruncateAt.END);
 			linearLayout.addView(comment1);
 		}
 		
