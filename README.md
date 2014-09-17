@@ -19,10 +19,11 @@ Completed user stories:
 - [x] Optional: Show profile picture in a circular frame
 - [x] Optional: Show relative time of creation date of photo
 - [x] Optional: Show translucent header for each photo (profile pic, username, relative time stamp)
+- [x] Optional: Show two latest comments for each photo.
 
 Walkthrough with optional user stories:
 
-![Features Video Walkthrough](demo.gif)
+![Features Video Walkthrough](demo2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
