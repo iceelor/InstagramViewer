@@ -1,9 +1,12 @@
 InstagramViewer
 ===============
 
+
 Android Instagram Client
 
 - Time spent: 4 hours spent in total on required development
+- Time spent: 9 hours spent in total on optional development
+
 
 Completed user stories: 
 
