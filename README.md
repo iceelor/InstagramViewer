@@ -15,6 +15,7 @@ Completed user stories:
 - [x] Optional: Display each photo with the same style and proportions as the real Instagram
 - [x] Optional: Show profile picture in a circular frame
 - [x] Optional: Show relative time of creation date of photo
+- [x] Optional: Show translucent header for each photo (profile pic, username, relative time stamp)
 
 Walkthroughs with optional user stories:
 
