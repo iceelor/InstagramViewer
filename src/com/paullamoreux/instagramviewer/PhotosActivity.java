@@ -31,6 +31,11 @@ public class PhotosActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_photos);
+		
+		photos = new ArrayList<InstagramPhoto>();
+		aPhotos = new InstagramPhotosAdapter(this, photos);
+		lvPhotos = (ListView) findViewById(R.id.lvPhotos);
+		lvPhotos.setAdapter(aPhotos);
 
 		fetchPopularPhotos();
 		
@@ -49,18 +54,15 @@ public class PhotosActivity extends Activity {
 
 
 	private void fetchPopularPhotos() {
-		photos = new ArrayList<InstagramPhoto>();
-
-		aPhotos = new InstagramPhotosAdapter(this, photos);
-		lvPhotos = (ListView) findViewById(R.id.lvPhotos);
-		lvPhotos.setAdapter(aPhotos);
-		
 		// https://api.instagram.com/v1/media/popular?client_id=8e50b9f199d84972a23c9740f24c10d1
 		String popularUrl = "https://api.instagram.com/v1/media/popular?client_id=" + CLIENT_ID;
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(popularUrl, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+				
+				photos.clear();
+				aPhotos.notifyDataSetChanged();
 				
 				JSONArray photosJSON = null;
 				try {

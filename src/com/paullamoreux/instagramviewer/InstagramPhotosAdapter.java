@@ -11,6 +11,7 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,9 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
+	private ImageView imgPhoto;
+	private InstagramPhoto photo;
+
 	public InstagramPhotosAdapter(Context context, List<InstagramPhoto> photos) {
 		super(context, R.layout.item_photo, photos);
 	}
@@ -27,7 +31,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
-		InstagramPhoto photo = getItem(position);
+		photo = getItem(position);
 		
 		if (convertView == null) {
 			// create a new view from scratch, otherwise use the view passed in
@@ -38,8 +42,20 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		TextView tvRelativeTime = (TextView) convertView.findViewById(R.id.tvRelativeTime);
 		TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
 		TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
-		ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
+		imgPhoto = (ImageView) convertView.findViewById(R.id.imgPhoto);
 		CircularImageView imgProfilePic = (CircularImageView) convertView.findViewById(R.id.imgProfilePic);
+		
+		ViewTreeObserver vto = imgPhoto.getViewTreeObserver();
+		vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+		    public boolean onPreDraw() {
+		    	imgPhoto.getViewTreeObserver().removeOnPreDrawListener(this);
+		        int imageViewWidth = imgPhoto.getMeasuredWidth();
+		        int imageViewHeight = imageViewWidth * (photo.imageHeight / photo.imageWidth);
+		        imgPhoto.getLayoutParams().height = imageViewHeight;
+		        //imgPhoto.setText("Height: " + finalHeight + " Width: " + finalWidth);
+		        return true;
+		    }
+		});
 
 		if (photo.caption != null) {
 			tvCaption.setVisibility(View.VISIBLE);
